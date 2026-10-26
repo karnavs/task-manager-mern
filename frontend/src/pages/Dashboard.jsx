@@ -28,6 +28,23 @@ function formatDate(date) {
 
 export default function Dashboard() {
     const { token, user, updateUser, logout } = useAuth();
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      return localStorage.getItem("task-manager-theme") === "dark";
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    const theme = darkMode ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("task-manager-theme", theme);
+    } catch {
+      // The theme still works for this session if storage is unavailable.
+    }
+  }, [darkMode]);
 
   const avatarInputRef = useRef(null);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -391,13 +408,33 @@ export default function Dashboard() {
             <span>{user?.email || ""}</span>
           </div>
 
-          <button
-            type="button"
-            className="logout-button"
-            onClick={logout}
-          >
-            Log out
-          </button>
+          <div className="header-actions">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={() => setDarkMode((current) => !current)}
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {darkMode ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="theme-icon">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="theme-icon">
+                  <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.6 8.6 0 1 0 20.9 13Z" />
+                </svg>
+              )}
+            </button>
+            <button
+              type="button"
+              className="logout-button"
+              onClick={logout}
+            >
+              Log out
+            </button>
+          </div>
         </div>
       </header>
 
