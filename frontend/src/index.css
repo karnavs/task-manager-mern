@@ -207,3 +207,117 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
+
+
+/* Contrast correction: keep text readable in BOTH themes.
+   These rules intentionally override the original component stylesheet. */
+:root:not([data-theme="dark"]) .dashboard-page,
+:root:not([data-theme="dark"]) .dashboard-page h1,
+:root:not([data-theme="dark"]) .dashboard-page h2,
+:root:not([data-theme="dark"]) .dashboard-page h3,
+:root:not([data-theme="dark"]) .dashboard-page h4,
+:root:not([data-theme="dark"]) .dashboard-page strong,
+:root:not([data-theme="dark"]) .dashboard-page label,
+:root:not([data-theme="dark"]) .dashboard-page .task-title,
+:root:not([data-theme="dark"]) .dashboard-page .task-main h3,
+:root:not([data-theme="dark"]) .dashboard-page .section-heading h2,
+:root:not([data-theme="dark"]) .dashboard-page .task-list-heading h2,
+:root:not([data-theme="dark"]) .dashboard-page .welcome-section h1,
+:root:not([data-theme="dark"]) .dashboard-page .stat-card strong,
+:root:not([data-theme="dark"]) .dashboard-page .user-details strong {
+  color: #182230;
+}
+
+:root:not([data-theme="dark"]) .dashboard-page .welcome-subtitle,
+:root:not([data-theme="dark"]) .dashboard-page .stat-label,
+:root:not([data-theme="dark"]) .dashboard-page .stat-caption,
+:root:not([data-theme="dark"]) .dashboard-page .task-description,
+:root:not([data-theme="dark"]) .dashboard-page .due-date,
+:root:not([data-theme="dark"]) .dashboard-page .user-details span {
+  color: #667085;
+}
+
+:root:not([data-theme="dark"]) .dashboard-page .task-list-section,
+:root:not([data-theme="dark"]) .dashboard-page .task-form-card,
+:root:not([data-theme="dark"]) .dashboard-page .stat-card,
+:root:not([data-theme="dark"]) .dashboard-page .task-card,
+:root:not([data-theme="dark"]) .dashboard-page .filter-card,
+:root:not([data-theme="dark"]) .dashboard-page .empty-state,
+:root:not([data-theme="dark"]) .dashboard-page .today-badge {
+  background-color: #ffffff;
+  color: #182230;
+}
+
+:root:not([data-theme="dark"]) .dashboard-page input,
+:root:not([data-theme="dark"]) .dashboard-page textarea,
+:root:not([data-theme="dark"]) .dashboard-page select {
+  color: #344054;
+  background-color: #ffffff;
+}
+
+:root[data-theme="dark"] .dashboard-page h1,
+:root[data-theme="dark"] .dashboard-page h2,
+:root[data-theme="dark"] .dashboard-page h3,
+:root[data-theme="dark"] .dashboard-page h4,
+:root[data-theme="dark"] .dashboard-page strong,
+:root[data-theme="dark"] .dashboard-page label,
+:root[data-theme="dark"] .dashboard-page .task-title,
+:root[data-theme="dark"] .dashboard-page .task-main h3,
+:root[data-theme="dark"] .dashboard-page .section-heading h2,
+:root[data-theme="dark"] .dashboard-page .task-list-heading h2,
+:root[data-theme="dark"] .dashboard-page .welcome-section h1,
+:root[data-theme="dark"] .dashboard-page .stat-card strong,
+:root[data-theme="dark"] .dashboard-page .user-details strong {
+  color: #edf1f8;
+}
+
+:root[data-theme="dark"] .dashboard-page .welcome-subtitle,
+:root[data-theme="dark"] .dashboard-page .stat-label,
+:root[data-theme="dark"] .dashboard-page .stat-caption,
+:root[data-theme="dark"] .dashboard-page .task-description,
+:root[data-theme="dark"] .dashboard-page .due-date,
+:root[data-theme="dark"] .dashboard-page .user-details span {
+  color: #aab4c5;
+}
+
+:root[data-theme="dark"] .dashboard-page .task-list-section,
+:root[data-theme="dark"] .dashboard-page .task-form-card,
+:root[data-theme="dark"] .dashboard-page .stat-card,
+:root[data-theme="dark"] .dashboard-page .task-card,
+:root[data-theme="dark"] .dashboard-page .filter-card,
+:root[data-theme="dark"] .dashboard-page .empty-state,
+:root[data-theme="dark"] .dashboard-page .today-badge {
+  background-color: #191e2a;
+  color: #edf1f8;
+  border-color: #30394b;
+}
+
+:root[data-theme="dark"] .dashboard-page input,
+:root[data-theme="dark"] .dashboard-page textarea,
+:root[data-theme="dark"] .dashboard-page select {
+  color: #edf1f8;
+  background-color: #151a25;
+  border-color: #30394b;
+}
+
+:root[data-theme="dark"] .dashboard-header {
+  background-color: #151a25;
+  border-color: #30394b;
+}
+
+:root:not([data-theme="dark"]) .dashboard-header {
+  background-color: #ffffff;
+  border-color: #e3e8f0;
+}
+
+/* Avoid pale text on the task-list section header in either theme. */
+:root:not([data-theme="dark"]) .dashboard-page .task-list-heading,
+:root:not([data-theme="dark"]) .dashboard-page .section-heading {
+  color: #182230;
+  background-color: #f8faff;
+}
+:root[data-theme="dark"] .dashboard-page .task-list-heading,
+:root[data-theme="dark"] .dashboard-page .section-heading {
+  color: #edf1f8;
+  background-color: #191e2a;
+}
